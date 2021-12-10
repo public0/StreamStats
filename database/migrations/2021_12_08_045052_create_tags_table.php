@@ -16,9 +16,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->index('user_id');
-
-//            $table->foreign('user_id')->references('user_id')->on('streams');
+            $table->foreign('user_id')->references('user_id')->on('streams');
             $table->string('tag_id');
             $table->timestamp(\App\Models\MainModel::CREATED_AT)->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
         });

@@ -16,7 +16,7 @@ class CreateStreamsTable extends Migration
         Schema::create('streams', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('twitch_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('user_login');
             $table->string('user_name');
             $table->string('game_id');
