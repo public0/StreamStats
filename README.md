@@ -22,3 +22,12 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+##Installation
+
+Step 1. After succesfull clone enter project folder and run `./composer.phar install`  
+Step 2. Inside project folder duplicate .env.example into .env and change credentials as needed
+Step 3. RUN create database streamstats or what DB_DATABASE equals to in .env file  
+Step 4. RUN `php artisan migrate`  
+Step 5. RUN `php artisan TopStreams` to populate the top 1000 streams table and the associated tags  
+Step 6. Assuming a web server is installed you should be able to go to http://localhost/streamstats/public/login and get started
