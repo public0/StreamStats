@@ -26,8 +26,8 @@
             <div id="gameStreamCountBody" class="" ></div>
         </div>
         <br />
-        <button id="gameViewerCountBtn" type="button" class="btn btn-primary">Top games by viewer ASC</button>
-        <button id="gameViewerCountBtnDesc" type="button" class="btn btn-primary">Top games by viewer DESC</button>
+        <button id="gameViewerCountBtn" type="button" class="btn btn-primary">Top games by viewer DESC</button>
+        <button id="gameViewerCountBtnDesc" type="button" class="btn btn-primary">Top games by viewer ASC</button>
         <div id="gameViewerCount">
             <div id="gameViewerCountSpinner" class="spinner spinner-border" role="status">
                 <span class="sr-only">Loading...</span>

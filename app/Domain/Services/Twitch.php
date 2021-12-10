@@ -46,7 +46,7 @@ class Twitch {
      */
     public function getStreamsPerGame($token) {
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', env('TWITCH_URL').'/games/top?first=5', [
+        $response = $client->request('GET', env('TWITCH_URL').'/games/top?first=10', [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
                 'Client-Id' =>env('TWITCH_CLIENT')
@@ -82,7 +82,7 @@ class Twitch {
                     $page++;
                     $cursor = isset($data->pagination->cursor)?$data->pagination->cursor:NULL;
 
-            } while($page <= 20);
+            } while($page <= 8);
             $game->streamer_count = $stream_count;
             $game->viewer_count = $viewerCount;
 //            $game->stream_viewers = $viewerCounts;
@@ -124,7 +124,7 @@ class Twitch {
             ]);
         $data = json_decode($streams->getBody()->getContents());
         if($order == 'desc') {
-            usort($data->data, ["App\Domain\Services\Helper","viewer_cmp"]);
+            $data->data = array_reverse($data->data);
         }
         return $data->data;
     }
@@ -281,7 +281,6 @@ class Twitch {
             }
         }
 
-        $translations = [];
         foreach ($uniqueFollowedTags as $tag) {
             $uri = env('TWITCH_URL').'/tags/streams?first=100&tag_id='.$tag;
             $twitch_tag = $client->request('GET', $uri,
@@ -297,15 +296,13 @@ class Twitch {
             if(!empty($decoded_twitch_tag->data)) {
                 foreach ($followedTags as $id => $user) {
                     foreach($user['tags'] as $followedTag => $v) {
-                        if(isset($followedTags[$id]['tags'][$followedTag]) && $followedTags[$id]['tags'][$followedTag] == '') {
-                            $followedTags[$id]['tags'][$followedTag] = $decoded_twitch_tag->data[0]->localization_descriptions->{'en-us'};;
+                        if(isset($followedTags[$id]['tags'][$tag]) && $followedTags[$id]['tags'][$tag] == '') {
+                            $followedTags[$id]['tags'][$tag] = $decoded_twitch_tag->data[0]->localization_descriptions->{'en-us'};;
                             break;
                         }
                     }
                 }
             }
-
-//            $translations[$tag] = $decoded_twitch_tag->data[0]->localization_descriptions->{'en-us'};
         }
         $topTagsCount = DB::table('tags')
             ->selectRaw('tag_id, count(*) as count')
