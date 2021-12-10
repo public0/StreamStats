@@ -31,3 +31,5 @@ Step 3. RUN create database streamstats or what DB_DATABASE equals to in .env fi
 Step 4. RUN `php artisan migrate`  
 Step 5. RUN `php artisan TopStreams` to populate the top 1000 streams table and the associated tags  
 Step 6. In case this is ran on wamp satck you should be able to go to http://localhost/streamstats/public/login and get started
+        In case of php local server php -D localhost:8000 -t ./public inside project http://localhost:8000/login
+        
