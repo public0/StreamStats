@@ -30,4 +30,4 @@ Step 2. Inside project folder duplicate .env.example into .env and change creden
 Step 3. RUN create database streamstats or what DB_DATABASE equals to in .env file  
 Step 4. RUN `php artisan migrate`  
 Step 5. RUN `php artisan TopStreams` to populate the top 1000 streams table and the associated tags  
-Step 6. Assuming a web server is installed you should be able to go to http://localhost/streamstats/public/login and get started
+Step 6. In case this is ran on wamp satck you should be able to go to http://localhost/streamstats/public/login and get started
