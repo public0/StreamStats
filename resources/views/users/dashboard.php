@@ -82,6 +82,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script>
+    let domain = '<?php echo env('APP_URL'); ?>';
     $(function(){
         $('.spinner').hide();
         $("button").click(function(){
@@ -112,7 +113,7 @@
     });
 
     async function getGameStreams() {
-        let url = 'http://localhost/StreamStats/public/gamestreams';
+        let url = domain+'/gamestreams';
         // Default options are marked with *
         $('#gameStreamCountSpinner').show();
         const response = await fetch(url, {
@@ -142,7 +143,7 @@
     }
 
     async function getGameViewers(order) {
-        let url = 'http://localhost/StreamStats/public/topstreams/'+order;
+        let url = domain+'/topstreams/'+order;
         // Default options are marked with *
         $('#gameViewerCountSpinner').show();
         const response = await fetch(url, {
@@ -170,7 +171,7 @@
     }
 
     async function getDateStreams(pages) {
-        let url = 'http://localhost/StreamStats/public/datestreams/'+pages;
+        let url = domain+'/datestreams/'+pages;
         // Default options are marked with *
         $('#streamsByDateSpinner').show();
         const response = await fetch(url, {
@@ -198,7 +199,7 @@
     }
 
     async function getTop1000() {
-        let url = 'http://localhost/StreamStats/public/followed/';
+        let url = domain+'/followed/';
         // Default options are marked with *
         $('#topFollowedSpinner').show();
         const response = await fetch(url, {
@@ -225,7 +226,7 @@
     }
 
     async function getLowest() {
-        let url = 'http://localhost/StreamStats/public/lowest/';
+        let url = domain+'/lowest/';
         // Default options are marked with *
         $('#lowestSpinner').show();
         const response = await fetch(url, {
@@ -249,7 +250,7 @@
         $('#lowestBody').html(output);
     }
     async function getTags() {
-        let url = 'http://localhost/StreamStats/public/tags/';
+        let url = domain+'/tags/';
         // Default options are marked with *
         $('#tagsSpinner').show();
         const response = await fetch(url, {
@@ -267,7 +268,6 @@
         });
         $('#tagsSpinner').hide();
         let data = await response.json();
-        console.log(data);
         let output = '<ul class="list-group">';
         output+='<li class="list-group-item list-group-item list-group-item-secondary"><b>Tag Owners and transaltions</b></li>';
         for(let key in data.result.followed_tags) {
@@ -288,13 +288,6 @@
             output+='<li class="list-group-item list-group-item list-group-item-secondary">'+'Tag ID: '+tag.tag_id+
                 ' Counter: '+tag.count+' times</li>';
         });
-        // for(let key in data.result.top_tags) {
-        //     if (data.result.top_tags.hasOwnProperty(key)) {
-        //         for(let tag in data.result.top_tags[key].tags) {
-        //         console.log(data.result.top_tags[key]);
-        //     }
-        //
-        // }
         output+='</ul>';
         $('#tagsBody').html(output);
     }

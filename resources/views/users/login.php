@@ -6,8 +6,7 @@
     <p><a href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=0gqrdaa6mwgb9d5zk8n2fow8ryve34&redirect_uri=http://localhost/StreamStats/public/login&scope=user:read:follows+viewing_activity_read+openid+user:read:email+analytics:read:games&claims={"id_token":{"email_verified":null}}">Login</a></p>
 </body>
 <script>
-    // const [hash, query] = window.location.href.split('#')[1].split('?')
-    // const params = Object.fromEntries(new URLSearchParams(query))
+    let domain = '<?php echo env('APP_URL'); ?>';
 
     function getParamsAfterHash() {
         let url;
@@ -23,7 +22,7 @@
 
     async function postUserIU(data = {}) {
         if(data.access_token) {
-            let url = 'http://localhost/StreamStats/public/useriu';
+            let url = domain+'/useriu';
             // Default options are marked with *
             const response = await fetch(url, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
