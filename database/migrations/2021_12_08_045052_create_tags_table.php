@@ -20,7 +20,7 @@ class CreateTagsTable extends Migration
             $table->string('tag_id');
             $table->timestamp(\App\Models\MainModel::CREATED_AT)->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
         });
-        
+
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Stream;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputOption;
 
 class TopStreamsCommand extends Command {
@@ -81,10 +82,12 @@ class TopStreamsCommand extends Command {
         } while($page < 10);
 
         if($returnData) {
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             Stream::truncate();
             Tag::truncate();
             Stream::insert($returnData);
             Tag::insert($tagData);
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         } else
             $this->alert('Twitch returned no data!');
 
