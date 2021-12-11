@@ -12,6 +12,11 @@ use App\Domain\Services\Helper;
 use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\isEmpty;
 
+/**
+ * Class Twitch
+ * @package App\Domain\Services
+ * @todo Add Facade for guzzle and add through injection
+ */
 class Twitch {
     public function userIU($token) {
         $client = new \GuzzleHttp\Client();
