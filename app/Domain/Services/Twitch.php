@@ -10,14 +10,15 @@ use \GuzzleHttp\Client;
 use Illuminate\Database\QueryException;
 use App\Domain\Services\Helper;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Facade;
 use function PHPUnit\Framework\isEmpty;
 
 /**
  * Class Twitch
  * @package App\Domain\Services
- * @todo Add Facade for guzzle and add through injection
  */
 class Twitch {
+
     public function userIU($token) {
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', env('TWITCH_URL').'/users', [
