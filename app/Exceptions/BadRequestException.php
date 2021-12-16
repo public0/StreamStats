@@ -5,7 +5,7 @@ namespace App\Exceptions;
 
 use Throwable;
 
-class BadRequestException extends RinghelException
+class BadRequestException extends GeneralException
 {
     protected $code = 400;
     protected $type = 'BadRequestException';

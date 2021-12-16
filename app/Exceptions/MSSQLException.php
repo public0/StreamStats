@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Database\QueryException;
 use Throwable;
 
-class RinghelSQLException extends QueryException implements Throwable
+class MSSQLException extends QueryException implements Throwable
 {
     protected $type = 'CoreException';
 

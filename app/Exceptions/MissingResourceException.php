@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-class MissingResourceException extends RinghelException
+class MissingResourceException extends GeneralException
 {
     protected $code = 404;
     protected $type = 'NotFoundException';

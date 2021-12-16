@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-class InputException extends RinghelException
+class InputException extends GeneralException
 {
     protected $code = 422;
     protected $type = 'InputException';

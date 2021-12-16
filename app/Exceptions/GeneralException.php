@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-class RinghelException extends Exception implements Throwable
+class GeneralException extends Exception implements Throwable
 {
     protected $type = 'CoreException';
 

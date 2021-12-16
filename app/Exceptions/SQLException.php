@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Database\QueryException;
 use Throwable;
 
-class SQLException extends RinghelSQLException
+class SQLException extends MSSQLException
 {
     protected $code = 500;
     protected $type = 'DatabaseException';

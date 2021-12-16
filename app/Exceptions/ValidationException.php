@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-class ValidationException extends RinghelException
+class ValidationException extends GeneralException
 {
     protected $code = 401;
     protected $type = 'ValidationException';
